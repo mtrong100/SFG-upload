@@ -20,7 +20,16 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleUploadAgent = async () => {
-    if (!value.trim() || !image || !selected) return;
+    if (!value.trim()) return;
+    if (!selected) {
+      toast.error("Please select class!");
+      return;
+    }
+    if (!image) {
+      toast.error("Image missing!");
+      return;
+    }
+
     setIsLoading(true);
 
     try {
